@@ -181,102 +181,141 @@ Remember to never share your API keys or sensitive credentials!
 
 # Content Gen
 
-A powerful content generation platform built with React, Supabase, and OpenAI. Generate emails, newsletters, and articles with customizable prompts.
+A modern content generation platform powered by AI. Generate emails, newsletters, and articles with customizable prompts.
 
-## Features
+## Quick Setup Guide
 
-- 📧 **Email Generation**: Create professional emails with customizable templates
-- 📰 **Newsletter Creation**: Generate engaging newsletters with various styles
-- 📝 **Article Writing**: Produce high-quality articles with different writing styles
-- 🎯 **Custom Prompts**: Create and manage your own content generation prompts
-- 🔄 **Default Templates**: Built-in templates for quick starts
-- 🔒 **User Authentication**: Secure user-specific content and settings
-- 💾 **Content History**: Track and manage your generated content
+### 1. Prerequisites
 
-## Tech Stack
+```bash
+# Required
+Node.js 18+ and npm
+Supabase account (free tier works)
+OpenAI API key
 
-- **Frontend**: React + Vite + TypeScript
-- **UI**: Tailwind CSS + shadcn/ui
-- **Backend**: Supabase
-- **AI**: OpenAI GPT-4
-- **Auth**: Supabase Auth
-- **Database**: PostgreSQL (via Supabase)
+# Optional but recommended
+VS Code
+Git
+```
 
-## Getting Started
+### 2. Clone and Install
 
-### Prerequisites
+```bash
+# Clone the repository
+git clone https://github.com/EDNAHQ/Content-Gen.git
+cd Content-Gen
 
-- Node.js 18+ and npm
-- Supabase account
-- OpenAI API key
+# Install dependencies
+npm install
+```
 
-### Installation
+### 3. Set Up Supabase
 
-1. Clone the repository:
+1. Create a new Supabase project at https://supabase.com
+2. Once created, go to Project Settings > API to find your:
+   - Project URL
+   - anon/public API key
+
+3. Run the database migrations:
    ```bash
-   git clone https://github.com/EDNAHQ/Content-Gen.git
-   cd Content-Gen
+   # Navigate to the migrations folder
+   cd supabase/migrations
+   
+   # Run these SQL files in your Supabase SQL editor in this order:
+   1. 20240204_user_policies.sql
+   2. 20240204_default_prompts.sql
    ```
 
-2. Install dependencies:
+### 4. Environment Setup
+
+1. Copy the example environment file:
    ```bash
-   npm install
+   cp .env.example .env
    ```
 
-3. Create a `.env` file in the root directory:
+2. Fill in your environment variables:
    ```env
-   VITE_SUPABASE_URL=your_supabase_url
-   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-   VITE_OPENAI_API_KEY=your_openai_api_key
+   # Required
+   VITE_SUPABASE_URL=your_project_url
+   VITE_SUPABASE_ANON_KEY=your_anon_key
+   VITE_OPENAI_API_KEY=your_openai_key
+   VITE_OPENAI_MODEL=gpt-4
+
+   # Development settings
+   VITE_APP_URL=http://localhost:5173
+   VITE_API_URL=http://localhost:5173/api
+   NODE_ENV=development
    ```
 
-4. Set up your Supabase database:
-   - Create a new Supabase project
-   - Run the migration files in the `supabase/migrations` directory
-   - Enable Row Level Security (RLS) policies
+### 5. Start the Development Server
 
-5. Start the development server:
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
-## Usage
+The app will be available at http://localhost:5173
 
-1. **Authentication**: Sign up or log in to access the platform
-2. **Prompt Management**: Create custom prompts or use default templates
-3. **Content Generation**:
-   - Choose the type of content (email, newsletter, article)
-   - Select a prompt template
-   - Enter your content notes
-   - Generate and edit the content
+## Common Setup Issues
+
+### 1. OpenAI API Issues
+- Ensure your API key is valid and has sufficient credits
+- Check that you're using GPT-4 model access if specified
+- If you get rate limit errors, implement retry logic or switch to GPT-3.5
+
+### 2. Supabase Connection Issues
+- Verify your project URL and anon key are correct
+- Check if the SQL migrations ran successfully
+- Ensure your IP isn't blocked in Supabase dashboard
+
+### 3. Development Server Issues
+- Clear your node_modules and package-lock.json and run npm install again
+- Check if all required ports are available
+- Verify your Node.js version (18+ required)
+
+## Core Features
+
+1. **Email Generation**
+   - Professional email templates
+   - Custom prompt creation
+   - Multiple styles and tones
+
+2. **Newsletter Creation**
+   - Company updates
+   - Educational content
+   - Customizable templates
+
+3. **Article Writing**
+   - Technical articles
+   - Thought leadership
+   - Blog posts
 
 ## Project Structure
 
-```
+```plaintext
 content-gen/
-├── src/
-│   ├── components/     # Reusable UI components
-│   ├── pages/         # Page components
-│   ├── hooks/         # Custom React hooks
-│   ├── config/        # Configuration files
-│   └── integrations/  # External service integrations
+├── src/                  # Source code
+│   ├── components/       # React components
+│   ├── pages/           # Page components
+│   ├── hooks/           # Custom React hooks
+│   └── config/          # Configuration files
 ├── supabase/
-│   └── migrations/    # Database migrations
-└── public/           # Static assets
+│   └── migrations/      # Database setup
+└── .env.example         # Environment template
 ```
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+2. Create your feature branch
+3. Make your changes
+4. Submit a pull request
 
 ## Support
 
-For support, please open an issue in the GitHub repository.
+- Create an issue for bugs or features
+- Check existing issues before creating new ones
+- Provide clear steps to reproduce bugs
+
+## License
+
+Apache License 2.0 - See LICENSE file for details
