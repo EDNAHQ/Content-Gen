@@ -178,3 +178,105 @@ For support, please:
 3. Create a new issue if needed
 
 Remember to never share your API keys or sensitive credentials!
+
+# Content Gen
+
+A powerful content generation platform built with React, Supabase, and OpenAI. Generate emails, newsletters, and articles with customizable prompts.
+
+## Features
+
+- 📧 **Email Generation**: Create professional emails with customizable templates
+- 📰 **Newsletter Creation**: Generate engaging newsletters with various styles
+- 📝 **Article Writing**: Produce high-quality articles with different writing styles
+- 🎯 **Custom Prompts**: Create and manage your own content generation prompts
+- 🔄 **Default Templates**: Built-in templates for quick starts
+- 🔒 **User Authentication**: Secure user-specific content and settings
+- 💾 **Content History**: Track and manage your generated content
+
+## Tech Stack
+
+- **Frontend**: React + Vite + TypeScript
+- **UI**: Tailwind CSS + shadcn/ui
+- **Backend**: Supabase
+- **AI**: OpenAI GPT-4
+- **Auth**: Supabase Auth
+- **Database**: PostgreSQL (via Supabase)
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ and npm
+- Supabase account
+- OpenAI API key
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/EDNAHQ/Content-Gen.git
+   cd Content-Gen
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file in the root directory:
+   ```env
+   VITE_SUPABASE_URL=your_supabase_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   VITE_OPENAI_API_KEY=your_openai_api_key
+   ```
+
+4. Set up your Supabase database:
+   - Create a new Supabase project
+   - Run the migration files in the `supabase/migrations` directory
+   - Enable Row Level Security (RLS) policies
+
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Usage
+
+1. **Authentication**: Sign up or log in to access the platform
+2. **Prompt Management**: Create custom prompts or use default templates
+3. **Content Generation**:
+   - Choose the type of content (email, newsletter, article)
+   - Select a prompt template
+   - Enter your content notes
+   - Generate and edit the content
+
+## Project Structure
+
+```
+content-gen/
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── pages/         # Page components
+│   ├── hooks/         # Custom React hooks
+│   ├── config/        # Configuration files
+│   └── integrations/  # External service integrations
+├── supabase/
+│   └── migrations/    # Database migrations
+└── public/           # Static assets
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+For support, please open an issue in the GitHub repository.
